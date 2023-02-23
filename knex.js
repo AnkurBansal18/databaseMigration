@@ -22,8 +22,6 @@ const prodd = require("knex")({
 // var d = new Array();
 // async function test() {
 //   const t = await loc("dash").insert({ id: 3 });
-
-//   console.log(t);
 // }
 var a;
 async function demo() {
@@ -43,4 +41,3 @@ async function demo() {
 demo();
 // console.log(a[0].int_lead_id);
 console.log("done");
-// test();

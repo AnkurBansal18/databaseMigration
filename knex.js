@@ -24,20 +24,48 @@ const prodd = require("knex")({
 //   const t = await loc("dash").insert({ id: 3 });
 // }
 var a;
-async function demo() {
-  a = await prodd
-    .select("int_lead_id", "txt_lead_name", "txt_lead_email", "int_contact")
-    .from("lead_details")
-    .limit(10);
-  for (let i = 0; i < 10; i++) {
-    await loc("dash").insert({
-      id: a[i].int_lead_id,
-      lead_name: a[i].txt_lead_name,
-      lead_email: a[i].txt_lead_email,
-      lead_phone: a[i].int_contact,
-    });
+
+// const pageSize = 10000;
+// let page = 0; // current page number
+// async function demo() {
+//   a = await prodd
+//     .select("int_lead_id", "txt_lead_name", "txt_lead_email", "int_contact")
+// .select("city")
+//     .from("lead_details")
+// .from("city")
+//     .offset(page * pageSize)
+//     .limit(pageSize);
+
+//   for (let i = 0; i < a.length; i++) {
+//     await loc("dash").insert({
+//       id: a[i].int_lead_id,
+//       lead_name: a[i].txt_lead_name,
+// lead_name: a[i].city,
+//       lead_email: a[i].txt_lead_email,
+//       lead_phone: a[i].int_contact,
+//     });
+//   }
+//   console.log(a, a.length);
+//   page++;
+//   if (a.length === pageSize) {
+//     // there may be more rows to fetch, so fetch the next page
+//     await demo();
+//   } else {
+//     // we've reached the end of the table
+//     console.log(`Fetched ${page * pageSize} rows from my_table`);
+//   }
+// }
+// demo();
+
+async function cityy() {
+  a = await prodd.select("city_id").from("city");
+  console.log(a.length);
+  for (let i = 0; i < a.length; i++) {
+    loc.select("id").from("cities").whereIn("id", a[city_id]);
+    // await loc("mapped_cities").insert({ legacy_city_id: a[i].city_id });
   }
 }
-demo();
-// console.log(a[0].int_lead_id);
+cityy();
 console.log("done");
+
+// for every a[i].cityid find corresponding cityid in loc.city
